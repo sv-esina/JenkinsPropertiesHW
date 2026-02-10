@@ -26,9 +26,10 @@ public class TestBase {
         String browserVersion = System.getProperty("browserVersion", "127.0");
         String browserSize = System.getProperty("browserSize", "1920x1080");
         String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-        String selenoidUrl = System.getProperty("selenoidUrl", "selenoid.autotests.cloud/wd/hub"); //    https://user1:1234@selenoid.autotests.cloud/wd/hub
-        String enableVNC = System.getProperty("enableVNC", "true");
-        String enableVideo = System.getProperty("enableVideo", "true");
+        String selenoidUrl = System.getProperty("selenoidUrl", "selenoid.autotests.cloud"); //    https://user1:1234@selenoid.autotests.cloud/wd/hub
+
+//        String enableVnc = System.getProperty("enableVnc");
+//        String enableVideo = System.getProperty("enableVideo");
 
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
@@ -38,8 +39,8 @@ public class TestBase {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", enableVNC,
-                "enableVideo", enableVideo
+                "enableVNC", true,
+                "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
         Configuration.remote = selenoidUrl;
