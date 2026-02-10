@@ -45,7 +45,7 @@ public class Attach extends TestBase{
     }
 
     public static URL getVideoUrl() {
-        String selectVideoUrl = System.getProperty("videoUrl", "https://selenoid.autotests.cloud/video/");
+        String selectVideoUrl = System.getProperty("selectVideoUrl", "https://selenoid.autotests.cloud/video/");
         String videoUrl = selectVideoUrl + sessionId() + ".mp4";
         try {
             return new URL(videoUrl);

@@ -28,9 +28,6 @@ public class TestBase {
         String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         String selenoidUrl = System.getProperty("selenoidUrl", "selenoid.autotests.cloud"); //    https://user1:1234@selenoid.autotests.cloud/wd/hub
 
-//        String enableVnc = System.getProperty("enableVnc");
-//        String enableVideo = System.getProperty("enableVideo");
-
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
         Configuration.baseUrl = baseUrl;
