@@ -56,5 +56,25 @@ public class PracticeFormWithGenerateData extends TestBase {
         });
 
     }
+
+    @Test
+    @DisplayName("Проверка обязательности ввода значения в поле FirstName")
+    void checkThatFirstNameFieldIsRequired() {
+        step("Открываем страницу "+baseUrl+page, () -> {
+            practiceFormPage.openPage()
+                    .removeBanners();
+        });
+        step("Заполняем поля формы кроме FirstName"+page, () -> {
+        practiceFormPage
+                .setLastName(fakerGenerateData.fakerLastName)
+                .setEmail(fakerGenerateData.fakerEmail)
+                .setGender(fakerGenerateData.fakerRandomGender)
+                .setUserNumber(fakerGenerateData.fakerPhoneNumber)
+                .setBirthDate(fakerGenerateData.fakerBirthDay, fakerGenerateData.fakerBirthMonth, fakerGenerateData.fakerBirthYear)
+                .clickSubmit()
+                .getModalDialog();
+
+        });
+    }
 }
 

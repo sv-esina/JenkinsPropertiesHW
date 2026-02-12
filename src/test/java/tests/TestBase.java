@@ -26,7 +26,7 @@ public class TestBase {
         String browserVersion = System.getProperty("browserVersion", "127.0");
         String browserSize = System.getProperty("browserSize", "1920x1080");
         String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-        String selenoidUrl = System.getProperty("selenoidUrl", "selenoid.autotests.cloud"); //    https://user1:1234@selenoid.autotests.cloud/wd/hub
+        String selenoidUrl = System.getProperty("selenoidUrl");
 
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
