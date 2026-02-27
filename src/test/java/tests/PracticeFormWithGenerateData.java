@@ -7,7 +7,6 @@ import pages.PracticeFormPage;
 
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static io.qameta.allure.Allure.step;
-import static pages.PracticeFormPage.page;
 
 
 public class PracticeFormWithGenerateData extends TestBase {
@@ -20,11 +19,13 @@ public class PracticeFormWithGenerateData extends TestBase {
     @DisplayName("Проверка корректности заполнения формы automation-practice-form")
     void checkingCorrectFillingOfPracticeFormFields(){
 
-        step("Открываем страницу "+baseUrl+page, () -> {
-            practiceFormPage.openPage()
-                            .removeBanners();
+        step("Открываем страницу "+baseUrl, () -> {
+            practiceFormPage
+                            .openBaseUrl()
+                            .openPageForms();
+
         });
-        step("Заполняем поля формы "+page, () -> {
+        step("Заполняем поля формы Practice Form", () -> {
             practiceFormPage.setFirstName(fakerGenerateData.fakerFirstName)
                     .setLastName(fakerGenerateData.fakerLastName)
                     .setEmail(fakerGenerateData.fakerEmail)
@@ -60,11 +61,11 @@ public class PracticeFormWithGenerateData extends TestBase {
     @Test
     @DisplayName("Проверка обязательности ввода значения в поле FirstName")
     void checkThatFirstNameFieldIsRequired() {
-        step("Открываем страницу "+baseUrl+page, () -> {
-            practiceFormPage.openPage()
-                    .removeBanners();
+        step("Открываем страницу "+baseUrl, () -> {
+            practiceFormPage.openBaseUrl()
+                    .openPageForms();
         });
-        step("Заполняем поля формы кроме FirstName"+page, () -> {
+        step("Заполняем поля формы кроме FirstName", () -> {
         practiceFormPage
                 .setLastName(fakerGenerateData.fakerLastName)
                 .setEmail(fakerGenerateData.fakerEmail)

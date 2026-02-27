@@ -8,13 +8,17 @@ import pages.components.TableResponsive;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormPage {
 
-    public static String page = "/automation-practice-form";
+    public static String baseUrl = "https://demoqa.com";
 
-    private final SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement
+            practiceForm=$(".practice-form-wrapper"),
+            practiceFormName=$(".text-center"),
+            firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -35,21 +39,25 @@ public class PracticeFormPage {
     CalendarComponent calendarComponent = new CalendarComponent();
     TableResponsive tableResponsive = new TableResponsive();
 
-
-
-    public PracticeFormPage openPage() {
-        open(page);
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+    @Step("Открываем сайт demoqa")
+    public PracticeFormPage openBaseUrl() {
+        open(baseUrl);
 
         return this;
     }
 
-    public PracticeFormPage removeBanners() {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        return this;
 
+    @Step("Переходим на форму Practice Form")
+    public PracticeFormPage openPageForms() {
+        $(byText("Forms")).click();
+        $(byText("Practice Form")).click();
+        practiceForm.shouldBe(visible);
+        practiceFormName.shouldHave(text("Practice Form"));
+
+        return this;
     }
+
+
 
     @Step("Заполяем поле FirstName")
     public PracticeFormPage setFirstName(String value) {
